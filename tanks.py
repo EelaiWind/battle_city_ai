@@ -838,12 +838,12 @@ class Enemy(Tank):
 			self.health = 400
 
 		# 1 in 5 chance this will be bonus carrier, but only if no other tank is
-		if random.randint(1, 5) == 1:
-			self.bonus = True
-			for enemy in enemies:
-				if enemy.bonus:
-					self.bonus = False
-					break
+		# if random.randint(1, 5) == 1:
+		#	self.bonus = True
+		#	for enemy in enemies:
+		#		if enemy.bonus:
+		#			self.bonus = False
+		#			break
 
 		images = [
 			sprites.subsurface(32*2, 0, 13*2, 15*2),
@@ -1459,7 +1459,7 @@ class Game():
 		del gtimer.timers[:]
 
 		# set current stage to 0
-		self.stage = 1
+		self.stage = 0
 
 		self.animateIntroScreen()
 
@@ -1941,7 +1941,7 @@ class Game():
 
 		# set number of enemies by types (basic, fast, power, armor) according to level
 		levels_enemies = (
-			(18,2,0,0), (1,1,1,1), (14,4,0,2), (2,5,10,3), (8,5,5,2),
+			(18,2,0,0), (14,4,0,2), (14,4,0,2), (2,5,10,3), (8,5,5,2),
 			(9,2,7,2), (7,4,6,3), (7,4,7,2), (6,4,7,3), (12,2,4,2),
 			(5,5,4,6), (0,6,8,6), (0,8,8,4), (0,4,10,6), (0,2,10,8),
 			(16,2,0,2), (8,2,8,2), (2,8,6,4), (4,4,4,8), (2,8,2,8),
@@ -2153,6 +2153,9 @@ class Game():
 			if bullet.owner == bullet.OWNER_ENEMY:
 				nrect=bullet.rect.copy()
 				mapinfo[0].append([nrect,bullet.direction,bullet.speed])
+			elif: bullet.owner == bullet.OWNER_PLAYER:
+				nrect=bullet.rect.copy()
+				mapinfo[4].append([nrect,bullet.direction,bullet.speed])
 		for enemy in enemies:
 			nrect=enemy.rect.copy()
 			mapinfo[1].append([nrect,enemy.direction,enemy.speed,enemy.type])

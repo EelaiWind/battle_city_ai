@@ -9,11 +9,12 @@ class ai_agent():
 	# rect:					[left, top, width, height]
 	# rect_type:			0:empty 1:brick 2:steel 3:water 4:grass 5:froze
 	# castle_rect:			[12*16, 24*16, 32, 32]
-	# mapinfo[0]: 			bullets [rect, direction, speed]]
+	# mapinfo[0]: 			enemy_bullets [rect, direction, speed]]
 	# mapinfo[1]: 			enemies [rect, direction, speed, type]]
 	# enemy_type:			0:TYPE_BASIC 1:TYPE_FAST 2:TYPE_POWER 3:TYPE_ARMOR
 	# mapinfo[2]: 			tile 	[rect, type] (empty don't be stored to mapinfo[2])
 	# mapinfo[3]: 			player 	[rect, direction, speed, Is_shielded]]
+	# mapinfo[4]: 			player_bullets 	[rect, direction, speed, Is_shielded]]
 	# shoot:				0:none 1:shoot
 	# move_dir:				0:Up 1:Right 2:Down 3:Left 4:None
 
