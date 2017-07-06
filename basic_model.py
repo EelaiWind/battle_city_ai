@@ -7,11 +7,12 @@ class BasicModel(object):
 		self._session = session
 		self._scope = scope
 		self._weight_decay = weight_decay
-		self._learning_rate = tf.placeholder(tf.float32)
-		self._build_model()
-		self._trainable_variables = sorted([t for t in tf.trainable_variables() if t.name.startswith(self.scope)], key=lambda x: x.name)
-		self._build_loss()
-		if checkpoint_path is not None: self._setupSaver(checkpoint_path)
+		with tf.variable_scope(scope):
+			self._learning_rate = tf.placeholder(tf.float32)
+			self._build_model()
+			self._trainable_variables = sorted([t for t in tf.trainable_variables() if t.name.startswith(self.scope)], key=lambda x: x.name)
+			self._build_loss()
+			if checkpoint_path is not None: self._setupSaver(checkpoint_path)
 
 	@property
 	def learning_rate(self):
